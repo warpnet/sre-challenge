@@ -6,7 +6,11 @@ Your goals is to deploy the included Python application directly in a local Kube
 
 You can use to following command to start the application:
 ```bash
+pip install -r app/requirements.txt
+flask --app app/main run
 ```
+
+Test the application by opening [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 
 Your allowed to modify the included application as you see fit.
 
