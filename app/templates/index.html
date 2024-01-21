@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Homepage{% endblock %}
+{% block content %}
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">E-Corp</h1>
+        <p class="lead my-3">E-Corp is the largest multinational conglomerate in the world.</p>
+        {% if not is_authenticated %}
+        <p class="lead mb-0"><a href="{{ url_for('login') }}" class="text-white fw-bold">Login →</a></p>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if is_authenticated %}
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Internal</strong>
+            <h3 class="mb-0">Incident</h3>
+            <div class="mb-1 text-muted">Secret</div>
+            <p class="card-text mb-auto">In 1995 Lester Moore died in a place crash. The public and most of the world think the crash looked like an accident.</p>
+            <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block" style="width: 200px;height: 250px;">
+            <img src="https://source.unsplash.com/49WfhzHRDco" height="250px" class="bd-placeholder-img mg-responsive">
+        </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Environment</strong>
+            <h3 class="mb-0">Toxic gas leak</h3>
+            <div class="mb-1 text-muted">Secret</div>
+            <p class="mb-auto">In 1992 there was a toxic gas leak in the Washington Township power plant, which resulted in several workers getting leukemia. </p>
+            <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block" style="width: 200px;height: 250px;">
+            <img src="https://source.unsplash.com/49WfhzHRDco" height="250px" class="bd-placeholder-img mg-responsive">
+        </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

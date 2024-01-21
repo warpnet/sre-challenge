@@ -2,12 +2,13 @@
 Welcome to the Site Reliability Engineering (SRE) challenge, where your SRE skills will be put to a test. You'll be deploying an application in a Kubernetes environment, showcasing your ability to orchestrate complex systems. From defining Kubernetes manifests to fixing some bugs and ensuring good observability, this challenge mirrors real-world scenarios encountered by our SREs. Whether you're a seasoned professional or a newcomer eager to explore complex cloud environments, this challenge offers platform to demonstrate your expertise.
 
 ## Instructions
-Your goals is to deploy the included Python application directly in a local Kubernetes cluster. The application may contain some bugs.
+Your goals is to deploy the included Python application directly in a local Kubernetes cluster. The application may contain some bugs and vulnerabilities.
 
 You can use to following command to start the application:
 ```bash
-pip install -r app/requirements.txt
-flask --app app/main run
+cd app
+pip install -r requirements.txt
+flask --app application run
 ```
 
 Test the application by opening [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
