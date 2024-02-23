@@ -1,5 +1,5 @@
 # Warpnet SRE Challenge
-Welcome to the Site Reliability Engineering (SRE) challenge, where your SRE skills will be put to a test. You'll be deploying an application in a Kubernetes environment, showcasing your ability to orchestrate complex systems. From defining Kubernetes manifests to fixing some bugs and ensuring good observability, this challenge mirrors real-world scenarios encountered by our SREs. Whether you're a seasoned professional or a newcomer eager to explore complex cloud environments, this challenge offers platform to demonstrate your expertise.
+Welcome to the Site Reliability Engineering (SRE) challenge, where your SRE skills will be put to a test. You'll be deploying an application in a traditional and Kubernetes environment, showcasing your ability to orchestrate complex systems. From defining Kubernetes manifests to fixing some bugs and ensuring good observability, this challenge mirrors real-world scenarios encountered by our SREs. Whether you're a seasoned professional or a newcomer eager to explore complex cloud environments, this challenge offers platform to demonstrate your expertise.
 
 ## Instructions
 Your goals is to deploy the included Python application directly in a local Kubernetes cluster. The application may contain some bugs and vulnerabilities.
@@ -28,6 +28,20 @@ In this challenge, you'll navigate through a series of objectives designed to as
 
 As you embark on the SRE challenge, we want to emphasize that the objects is not to stress about achieving perfection on every front. Our primary goal is to gain insights into you current skill set and problem-solving approach within the realm of Site Reliability Engineering. Recognize that the challenge may be multifaceted, and it's perfectly acceptable to prioritize certain objectives over others. This challenge is an opportunity for you to demonstrate your existing skills and learning, providing valuable insights into your capabilities as an SRE professional.
 
+## The challenge
+A lot of enterprise organizations make the transition from traditional VM's to deployments in a kubernetes based infrastructure. Automation, security, architecture, quality of code are main subjects during this transition. This challenge is all about simulating that. There are a three main assignments that you need to do during this challenge;
+
+- Deploy the app on a traditional VM
+- Look into the application code and make adjustments that you think are necessary
+- Deploy the app on a Kubernetes environment
+
+You are free to choose which tools and methods you use during this challenge. Keep in mind that you should show the listed aspects under [Objectives](## Objectives) in your solution.
+
+## Tips and tricks
+Below you find a few quick tips to quickly get you up and running. If you are more comfortable using other kind of tools, feel free to use them!
+
+- Vagrant; Vagrant is a tool that allows you to quickly setup a dev environment based on VM's
+- MiniKube; In general Kubernetes requires a lot of resources, MiniKube helps you setting up a local cluster on your workstation
+
 ## Get Involved
 [Explore open jobs at Warpnet](https://warpnet.nl/jobs/) or take a look at our [featured projects](https://github.com/warpnet). Visit [warpnet.nl](https://warpnet.nl/) to learn more!
-
