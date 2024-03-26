@@ -28,14 +28,17 @@ def is_authenticated():
 
 def authenticate(username, password):
     connection = get_db_connection()
-    users = connection.execute("SELECT * FROM users").fetchall()
+    users = connection.execute("SELECT password FROM users WHERE username = ?", username).fetchall()
     connection.close()
 
-    for user in users:
-        if user["username"] == username and user["password"] == password:
-            app.logger.info(f"the user '{username}' logged in successfully with password '{password}'")
-            session["username"] = username
-            return True
+    if len(users) == 0 or len(users) > 1:
+        app.logger.warning(f"the user '{username}' failed to log in '{password}'")
+        abort(401)
+
+    if users[0]["password"] == password:
+        app.logger.info(f"the user '{username}' logged in successfully with password '{password}'")
+        session["username"] = username
+        return True
 
     app.logger.warning(f"the user '{username}' failed to log in '{password}'")
     abort(401)
