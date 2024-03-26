@@ -2,7 +2,6 @@ import sqlite3
 import logging
 from flask import Flask, session, redirect, url_for, request, render_template, abort
 
-
 app = Flask(__name__)
 app.secret_key = b"192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf"
 app.logger.setLevel(logging.INFO)
@@ -31,7 +30,7 @@ def authenticate(username, password):
             session["username"] = username
             return True
 
-    app.logger.warning(f"the user '{ username }' failed to log in '{ password }'")
+    app.logger.warning(f"the user '{username}' failed to log in '{password}'")
     abort(401)
 
 
