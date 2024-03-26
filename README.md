@@ -11,12 +11,16 @@ complex cloud environments, this challenge offers platform to demonstrate your e
 Your goal is to deploy the included Python application directly in a local Kubernetes cluster. The application may
 contain some bugs and vulnerabilities.
 
-You can use to following command to start the application:
+You can use to following command to start the application docker is required to run it:
 
 ```bash
-cd app
-pip install -r requirements.txt
-flask --app application run
+# Copy the template.env and rename it .env
+cp template.env .env
+
+# Make sure to edit the .env files with custom values depending on your preferences
+
+# Start the application
+docker compose up
 ```
 
 Test the application by opening [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.

@@ -1,10 +1,19 @@
+import os
 import sqlite3
 import logging
 from flask import Flask, session, redirect, url_for, request, render_template, abort
 
+# Setup Flask
 app = Flask(__name__)
-app.secret_key = b"192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf"
 app.logger.setLevel(logging.INFO)
+
+# Make sure there is a FLASK_SECRET
+if not os.getenv("FLASK_SECRET") or os.getenv("FLASK_SECRET") == "CHANGE_THIS_KEY":
+    app.logger.error("FLASK_SECRET not set correctly in the environment, check your env file")
+    exit(403)
+
+# Set the FLASK_SECRET
+app.secret_key = os.environ.get('FLASK_SECRET')
 
 
 def get_db_connection():
@@ -14,9 +23,7 @@ def get_db_connection():
 
 
 def is_authenticated():
-    if "username" in session:
-        return True
-    return False
+    return "username" in session
 
 
 def authenticate(username, password):
@@ -56,4 +63,8 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(
+        host=os.getenv("FLASK_HOST", "127.0.0.1"),
+        port=os.getenv("FLASK_PORT", 5000),
+        debug=os.getenv("DEBUG", False)
+    )

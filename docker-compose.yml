@@ -1,0 +1,12 @@
+# Create a Django test server docker
+services:
+  # Python 3.10 container for the dependencies
+  web:
+    # Build a docker container from the Dockerfile
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app
+    env_file: .env
+    entrypoint: python application.py
