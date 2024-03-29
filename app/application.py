@@ -4,7 +4,7 @@ from flask import Flask, session, redirect, url_for, request, render_template, a
 
 
 app = Flask(__name__)
-app.secret_key = b"192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf"
+app.config.from_pyfile("instance/config.py")
 app.logger.setLevel(logging.INFO)
 
 
@@ -22,16 +22,16 @@ def is_authenticated():
 
 def authenticate(username, password):
     connection = get_db_connection()
-    users = connection.execute("SELECT * FROM users").fetchall()
+    query = "SELECT * FROM users WHERE username = ? AND password = ?"
+    user = connection.execute(query, (username, password)).fetchone()
     connection.close()
 
-    for user in users:
-        if user["username"] == username and user["password"] == password:
-            app.logger.info(f"the user '{username}' logged in successfully with password '{password}'")
-            session["username"] = username
-            return True
+    if user:
+        app.logger.info(f"the user '{username}' logged in successfully.")
+        session["username"] = username
+        return True
 
-    app.logger.warning(f"the user '{ username }' failed to log in '{ password }'")
+    app.logger.warning(f"the user '{username}' failed to log in.")
     abort(401)
 
 
