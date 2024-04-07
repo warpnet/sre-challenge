@@ -7,7 +7,7 @@ RUN mkdir /app
 WORKDIR /app
 
 # Copy the requirements so it can install them
-ADD ./requirements.txt /app/requirements.txt
+ADD requirements.txt /app/requirements.txt
 
 # Update pip before installing packages
 RUN python -m pip install --upgrade pip

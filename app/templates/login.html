@@ -1,20 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
     <main class="container form-signin text-center">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
         <form action="{{ url_for('login') }}" method="post">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="username" placeholder="Username" name="username">
-                <label for="username">Username</label>
+                {{ form.username(placeholder="username", class="form-control") }}
+                {{ form.username.label }}
             </div>
+            {% if form.username.errors %}
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
             <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                <label for="password">Password</label>
+                {{ form.password(placeholder="password", class="form-control") }}
+                {{ form.password.label }}
             </div>
+            {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="cf-turnstile" data-sitekey="{{ site_key }}"></div>
+            {{ form.csrf_token }}
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         </form>
-
     </main>
 {% endblock %}
