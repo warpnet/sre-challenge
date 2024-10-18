@@ -1,0 +1,21 @@
+---
+name: Quality checks
+
+on:
+  pull_request:
+  push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github-ref }}
+  cancel-in-progress: true
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: pip install -r app/requirements-dev.txt
+      - name: Run linter
+        run: ruff check app/
+      - name: Check formatting
+        run: ruff format --check --diff
